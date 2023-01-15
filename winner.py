@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import re
+from writer import write_to_index_html_file
 
 POINTS_FOR_OVER_UNDER = 1
 POINTS_FOR_CORRECT_SCORE = 2
@@ -60,8 +61,8 @@ for plusieurs_ti_gars in good_score_winners_for_each_game:
     for ti_gars in plusieurs_ti_gars:
         score_final_chaque_ti_gars[ti_gars] += POINTS_FOR_CORRECT_SCORE
 
-print('======= SCOREBOARD =======')
-scoreboard = zip(list(noms_des_ti_gars), score_final_chaque_ti_gars)
+# print('======= SCOREBOARD =======')
+scoreboard = [i for i in zip(list(noms_des_ti_gars), score_final_chaque_ti_gars)]
 formatted_scoreboard = [f"{a}: {b}" for a, b in [i for i in scoreboard]]
 
 for row in formatted_scoreboard:
@@ -73,3 +74,7 @@ for index ,i in enumerate(good_score_winners_for_each_game):
     print("GAME " + str(index + 1))
     for j in i:
         print(ti_gars_par_numero[j])
+
+write_to_index_html_file(scoreboard)
+# for ti_gars in scoreboard:
+#     print(ti_gars)
