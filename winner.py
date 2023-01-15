@@ -7,11 +7,12 @@ POINTS_FOR_CORRECT_SCORE = 2
 POINTS_FOR_GOOD_TEAM = 3
 
 # important, faire (winner, loser) dans les scores
-REAL_LIFE_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (0,0)),
+REAL_LIFE_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34,13)),
            ('vikings', (0,0)), ('bengals', (0,0)), ('buccs', (0,0))]
+           
 OVER_UNDERS = [42, 47.5, 43.5, 48, 40.5, 45.5]
 
-excel = pd.read_excel("./excel/week1.xlsx")
+excel = pd.read_excel("./excel/week1-temp.xlsx")
 
 # changer les chiffres pour adapt au excel
 df = excel.T[3:-2].T
@@ -19,7 +20,7 @@ df = excel.T[3:-2].T
 score_final_chaque_ti_gars = np.zeros(9)
 noms_des_ti_gars = excel.iloc[:,1]
 
-good_score_winners_for_each_game = [[], [], [], [], [], []]
+good_score_winners_for_each_game = [[] for i in range(len(REAL_LIFE_DATA))]
 lowest_score_in_absolute = np.inf * np.ones(len(OVER_UNDERS))
 
 for ti_gars_number, row in df.iterrows():
