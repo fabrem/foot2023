@@ -21,6 +21,11 @@ jobs:
 
       - name: execute py script # run main.py
         run: python winner.py
+      
+      - name: identification
+        run: | 
+          git config --global user.email "remilevesque17@gmail.com"
+          git config --global user.name "fabrem"
 
       - name: stage changed files
         run: git add .
