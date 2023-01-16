@@ -28,7 +28,6 @@ good_score_winners_for_each_game = [[] for i in range(len(REAL_LIFE_DATA))]
 lowest_score_in_absolute = np.inf * np.ones(len(OVER_UNDERS))
 
 for ti_gars_number, row in df.iterrows():
-    print(row)
 
     for index, cell in enumerate(row):
         cell = cell.lower()
@@ -72,7 +71,7 @@ for plusieurs_ti_gars in good_score_winners_for_each_game:
     for ti_gars in plusieurs_ti_gars:
         score_final_chaque_ti_gars[ti_gars] += POINTS_FOR_CORRECT_SCORE
 
-# print('======= SCOREBOARD =======')
+print('======= SCOREBOARD =======')
 scoreboard = [i for i in zip(list(noms_des_ti_gars), score_final_chaque_ti_gars)]
 formatted_scoreboard = [f"{a}: {b}" for a, b in [i for i in scoreboard]]
 
