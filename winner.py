@@ -6,6 +6,8 @@ from writer import write_to_index_html_file
 POINTS_FOR_OVER_UNDER = 1
 POINTS_FOR_CORRECT_SCORE = 2
 POINTS_FOR_GOOD_TEAM = 3
+NUMBER_OF_GAMES_TO_CONSIDER = 5
+STARTING_INDEX = 3
 
 # important, faire (winner, loser) dans les scores
 REAL_LIFE_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34,13)),
@@ -13,10 +15,11 @@ REAL_LIFE_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34,13)
            
 OVER_UNDERS = [42, 47.5, 43.5, 48, 40.5, 45.5]
 
-excel = pd.read_excel("./excel/week1-temp.xlsx")
+excel = pd.read_excel("./excel/week1.xlsx")
 
 # changer les chiffres pour adapt au excel
-df = excel.T[3:].T
+df = excel.T[STARTING_INDEX: STARTING_INDEX + 3 * NUMBER_OF_GAMES_TO_CONSIDER].T
+
 
 score_final_chaque_ti_gars = np.zeros(9)
 noms_des_ti_gars = excel.iloc[:,1]
@@ -25,6 +28,7 @@ good_score_winners_for_each_game = [[] for i in range(len(REAL_LIFE_DATA))]
 lowest_score_in_absolute = np.inf * np.ones(len(OVER_UNDERS))
 
 for ti_gars_number, row in df.iterrows():
+    print(row)
 
     for index, cell in enumerate(row):
         cell = cell.lower()
