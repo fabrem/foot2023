@@ -9,7 +9,7 @@ POINTS_FOR_GOOD_TEAM = 3
 
 # important, faire (winner, loser) dans les scores
 REAL_LIFE_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34,13)),
-           ('giants (beurk)', (24,31)), ('bengals', (0,0)), ('buccs', (0,0))]
+           ('giants (beurk)', (24,31)), ('bengals', (24,17)), ('buccs', (0,0))]
            
 OVER_UNDERS = [42, 47.5, 43.5, 48, 40.5, 45.5]
 
@@ -38,8 +38,15 @@ for ti_gars_number, row in df.iterrows():
 
             if good_team:
                 score_ti_gars = re.findall(r'\b\d+\b', cell)
-                abs_total_score_avec_real_life = abs(int(score_ti_gars[0]) - REAL_LIFE_DATA[index // 3][1][0]) +  \
-                   abs(int(score_ti_gars[1]) - REAL_LIFE_DATA[index // 3][1][1])
+                score_team_gagnante = score_ti_gars[0]
+                score_team_perdante = score_ti_gars[1]
+                if score_team_perdante > score_team_gagnante:
+                    temp = score_team_gagnante
+                    score_team_gagnante = score_team_perdante
+                    score_team_perdante = temp
+
+                abs_total_score_avec_real_life = abs(int(score_team_gagnante) - REAL_LIFE_DATA[index // 3][1][0]) +  \
+                   abs(int(score_team_perdante) - REAL_LIFE_DATA[index // 3][1][1])
 
                 if abs_total_score_avec_real_life  == lowest_score_in_absolute[index // 3]:
                    good_score_winners_for_each_game[index // 3] += [ti_gars_number]
