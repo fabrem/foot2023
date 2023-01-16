@@ -9,7 +9,7 @@ POINTS_FOR_GOOD_TEAM = 3
 NUMBER_OF_GAMES_TO_CONSIDER = 5
 STARTING_INDEX = 3
 
-# important, faire (winner, loser) dans les scores
+# Important, faire (winner, loser) dans les scores
 REAL_LIFE_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34,13)),
            ('giants (beurk)', (24,31)), ('bengals', (24,17)), ('buccs', (0,0))]
            
