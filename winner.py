@@ -9,14 +9,14 @@ POINTS_FOR_GOOD_TEAM = 3
 
 # important, faire (winner, loser) dans les scores
 REAL_LIFE_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34,13)),
-           ('vikings', (0,0)), ('bengals', (0,0)), ('buccs', (0,0))]
+           ('giants (beurk)', (24,31)), ('bengals', (0,0)), ('buccs', (0,0))]
            
 OVER_UNDERS = [42, 47.5, 43.5, 48, 40.5, 45.5]
 
 excel = pd.read_excel("./excel/week1-temp.xlsx")
 
 # changer les chiffres pour adapt au excel
-df = excel.T[3:-2].T
+df = excel.T[3:].T
 
 score_final_chaque_ti_gars = np.zeros(9)
 noms_des_ti_gars = excel.iloc[:,1]
@@ -76,5 +76,3 @@ for index ,i in enumerate(good_score_winners_for_each_game):
         print(ti_gars_par_numero[j])
 
 write_to_index_html_file(scoreboard)
-# for ti_gars in scoreboard:
-#     print(ti_gars)
