@@ -11,7 +11,7 @@ STARTING_INDEX = 3
 
 # Important, faire (winner, loser) dans les scores
 REAL_LIFE_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34,13)),
-           ('giants (beurk)', (24,31)), ('bengals', (24,17)), ('cowboys', (31,6))]
+           ('giants (beurk)', (24,31)), ('bengals', (24,17)), ('cowboys', (31,13))]
            
 OVER_UNDERS = [42, 47.5, 43.5, 48, 40.5, 45.5]
 
