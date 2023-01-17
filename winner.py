@@ -3,15 +3,15 @@ import numpy as np
 import re
 from writer import write_to_index_html_file
 
-POINTS_FOR_OVER_UNDER = 1
-POINTS_FOR_CORRECT_SCORE = 2
-POINTS_FOR_GOOD_TEAM = 3
-NUMBER_OF_GAMES_TO_CONSIDER = 6
-STARTING_INDEX = 3
-
 # Important, faire (winner, loser) dans les scores
 REAL_LIFE_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34,13)),
            ('giants (beurk)', (24,31)), ('bengals', (24,17)), ('cowboys', (31,14))]
+
+POINTS_FOR_OVER_UNDER = 1
+POINTS_FOR_CORRECT_SCORE = 2
+POINTS_FOR_GOOD_TEAM = 3
+NUMBER_OF_GAMES_TO_CONSIDER = len(REAL_LIFE_DATA)
+STARTING_INDEX = 3
            
 OVER_UNDERS = [42, 47.5, 43.5, 48, 40.5, 45.5]
 
@@ -71,12 +71,19 @@ for plusieurs_ti_gars in good_score_winners_for_each_game:
     for ti_gars in plusieurs_ti_gars:
         score_final_chaque_ti_gars[ti_gars] += POINTS_FOR_CORRECT_SCORE
 
+
 print('======= SCOREBOARD =======')
 scoreboard = [i for i in zip(list(noms_des_ti_gars), score_final_chaque_ti_gars)]
+
+# sort the scoreboard
+scoreboard = sorted(scoreboard, key=lambda x: x[1], reverse=True)
+
+# format the scoreboard for the terminal
 formatted_scoreboard = [f"{a}: {b}" for a, b in [i for i in scoreboard]]
 
 for row in formatted_scoreboard:
     print(row)
+
 
 print('======= WINNERS OF SCORE =======')
 ti_gars_par_numero = {i:j for i, j in zip([i for i in range(len(noms_des_ti_gars))], list(noms_des_ti_gars))}
