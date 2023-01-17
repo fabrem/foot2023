@@ -15,7 +15,7 @@ STARTING_INDEX = 3
            
 OVER_UNDERS = [42, 47.5, 43.5, 48, 40.5, 45.5]
 
-excel = pd.read_excel("./excel/week1.xlsx")
+excel = pd.read_excel("./excel/tourner-dans-le-vide.xlsx")
 
 # changer les chiffres pour adapt au excel
 df = excel.T[STARTING_INDEX: STARTING_INDEX + 3 * NUMBER_OF_GAMES_TO_CONSIDER].T
