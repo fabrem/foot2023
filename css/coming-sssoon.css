@@ -322,7 +322,8 @@ h1 small, h2 small, h3 small, h1 .small, h2 .small, h3 .small {
 }
 
 .form-control:focus {
-    background-color: #FFFFFF;
+    /* background-color: #FFFFFF; */
+    /* background-color: #FFFFFF; */
     border: 1px solid #9A9A9A;
     box-shadow: none;
     outline: 0 none;
