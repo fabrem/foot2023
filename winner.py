@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import re
 from writer import write_to_index_html_file
+from fetch_todays_games import fetch_todays_game
 
 # Important, faire (winner, loser) dans les scores
 WEEK1_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34,13)),
@@ -131,4 +132,6 @@ for index ,i in enumerate(good_score_winners_for_each_game):
     for j in i:
         print(ti_gars_par_numero[j])
 
-write_to_index_html_file(scoreboard)
+games = fetch_todays_game()
+
+write_to_index_html_file(scoreboard, games)
