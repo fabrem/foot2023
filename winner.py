@@ -6,7 +6,7 @@ from writer import write_to_index_html_file
 # Important, faire (winner, loser) dans les scores
 WEEK1_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34,13)),
            ('giants (beurk)', (24,31)), ('bengals', (24,17)), ('cowboys', (31,14))]
-WEEK2_DATA = [("chiefs", (27,20)), ("eagles", (28,7))]
+WEEK2_DATA = [("chiefs", (27,20)), ("eagles", (38,7))]
 # WEEK2_DATA = [('chiefs', (41, 23))]
 
 ALL_DATA = WEEK1_DATA + WEEK2_DATA
