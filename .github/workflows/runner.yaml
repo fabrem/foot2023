@@ -3,7 +3,7 @@ run-name: updating football scores
 on: 
   push:
   schedule:
-    - cron: "*/5 * * * 6,7"
+    - cron: "*/5 * * * 6,0"
 
 permissions:
   actions: write
