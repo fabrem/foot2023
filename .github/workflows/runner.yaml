@@ -1,9 +1,9 @@
 name: FOOT 🏉
 run-name: updating football scores
 on: 
-  push:
   schedule:
     - cron: "*/5 * * * 6,0"
+  push:
 
 permissions:
   actions: write
