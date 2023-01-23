@@ -7,7 +7,7 @@ from fetch_todays_games import fetch_todays_game
 # Important, faire (winner, loser) dans les scores
 WEEK1_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34,13)),
            ('giants (beurk)', (24,31)), ('bengals', (24,17)), ('cowboys', (31,14))]
-WEEK2_DATA = [("chiefs", (27,20)), ("eagles", (38,7)), ("bengals", (27,10)), ("niners",(16,9))]
+WEEK2_DATA = [("chiefs", (27,20)), ("eagles", (38,7)), ("bengals", (27,10)), ("niners",(19,12))]
 # WEEK2_DATA = [('chiefs', (41, 23))]
 
 ALL_DATA = WEEK1_DATA + WEEK2_DATA
