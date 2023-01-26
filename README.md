@@ -1,5 +1,5 @@
 # Foot2023 scores
-go chargers go 😥
+go chargers go 🥴⚡️
 
 scoreboard: https://foot2023.netlify.app/
 
