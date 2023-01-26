@@ -2,15 +2,16 @@ import pandas as pd
 import numpy as np
 import re
 from writer import write_to_index_html_file
-from fetch_todays_games import fetch_todays_game
+from fetch_todays_games import fetch_todays_game, fetch_todays_game_charlem
 
 # Important, faire (winner, loser) dans les scores
 WEEK1_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34,13)),
            ('giants (beurk)', (24,31)), ('bengals', (24,17)), ('cowboys', (31,14))]
 WEEK2_DATA = [("chiefs", (27,20)), ("eagles", (38,7)), ("bengals", (27,10)), ("niners",(19,12))]
-# WEEK2_DATA = [('chiefs', (41, 23))]
+WEEK3_DATA = fetch_todays_game_charlem()
+WEEK4_DATA = []
 
-ALL_DATA = WEEK1_DATA + WEEK2_DATA
+ALL_DATA = WEEK1_DATA + WEEK2_DATA + WEEK3_DATA + WEEK4_DATA
 
 # WEEK 1 SCORING
 POINTS_FOR_OVER_UNDER_WEEK_1 = 1
@@ -21,11 +22,24 @@ POINTS_FOR_GOOD_TEAM_WEEK_1 = 3
 POINTS_FOR_OVER_UNDER_WEEK_2 = 1
 POINTS_FOR_CORRECT_SCORE_WEEK_2 = 2
 POINTS_FOR_GOOD_TEAM_WEEK_2 = 5
+
+# WEEK 3 SCORING
+POINTS_FOR_OVER_UNDER_WEEK_3 = 2
+POINTS_FOR_CORRECT_SCORE_WEEK_3 = 3
+POINTS_FOR_GOOD_TEAM_WEEK_3 = 8
+
+# WEEK 4 SCORING
+POINTS_FOR_OVER_UNDER_WEEK_4 = 2
+POINTS_FOR_CORRECT_SCORE_WEEK_4 = 5
+POINTS_FOR_GOOD_TEAM_WEEK_4 = 13
+
 NUMBER_OF_GAMES_TO_CONSIDER = len(ALL_DATA) # si on veut moins de games, changer ici
 STARTING_INDEX = 3
            
 POINTS = [[POINTS_FOR_GOOD_TEAM_WEEK_1, POINTS_FOR_CORRECT_SCORE_WEEK_1, POINTS_FOR_OVER_UNDER_WEEK_1], 
-          [POINTS_FOR_GOOD_TEAM_WEEK_2, POINTS_FOR_CORRECT_SCORE_WEEK_2, POINTS_FOR_OVER_UNDER_WEEK_2]]
+          [POINTS_FOR_GOOD_TEAM_WEEK_2, POINTS_FOR_CORRECT_SCORE_WEEK_2, POINTS_FOR_OVER_UNDER_WEEK_2],
+          [POINTS_FOR_GOOD_TEAM_WEEK_3, POINTS_FOR_CORRECT_SCORE_WEEK_3, POINTS_FOR_OVER_UNDER_WEEK_3],
+          [POINTS_FOR_GOOD_TEAM_WEEK_4, POINTS_FOR_CORRECT_SCORE_WEEK_4, POINTS_FOR_OVER_UNDER_WEEK_4]]
 
 OVER_UNDERS = [42, 47.5, 43.5, 48, 40.5, 45.5, 53, 48, 49, 46]
 
@@ -57,6 +71,12 @@ for ti_gars_number, row in df.iterrows():
 
         elif game_number <= len(WEEK2_DATA) + len(WEEK1_DATA):
             points_for_game = POINTS[1]
+
+        elif game_number <= len(WEEK3_DATA) +  len(WEEK2_DATA) + len(WEEK1_DATA):
+            points_for_game = POINTS[2]
+
+        elif game_number <= len(WEEK4_DATA) + len(WEEK3_DATA) +  len(WEEK2_DATA) + len(WEEK1_DATA):
+            points_for_game = POINTS[3]
 
         else:
             print(game_number)
@@ -106,8 +126,14 @@ for index, plusieurs_ti_gars in enumerate(good_score_winners_for_each_game):
         if game_number <= len(WEEK1_DATA): 
             points_for_game = POINTS[0][1]
 
-        elif game_number <= len(WEEK2_DATA) + len(WEEK1_DATA):
+        elif game_number <=  len(WEEK2_DATA) + len(WEEK1_DATA):
             points_for_game = POINTS[1][1]
+
+        elif game_number <=  len(WEEK3_DATA) + len(WEEK2_DATA) + len(WEEK1_DATA):
+            points_for_game = POINTS[2][1]
+        
+        elif game_number <= len(WEEK4_DATA) + len(WEEK3_DATA) +  len(WEEK2_DATA) + len(WEEK1_DATA):
+            points_for_game = POINTS[3][1]
 
         score_final_chaque_ti_gars[ti_gars] += points_for_game
 
