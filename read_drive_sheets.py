@@ -1,6 +1,7 @@
 from __future__ import print_function
 
 import os.path
+import numpy as np
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -13,7 +14,8 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
 # SAMPLE_SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
-SAMPLE_SPREADSHEET_ID='1peqqPz2FFA1kUzsPIkNK7F5bpgkSTGgV2-p6TBd933w' 
+# SAMPLE_SPREADSHEET_ID='1peqqPz2FFA1kUzsPIkNK7F5bpgkSTGgV2-p6TBd933w' 
+SAMPLE_SPREADSHEET_ID='1Cor_aDB9fmUKWV4qyRP_9wQ7RIrCdyhF_r0XSanU8FA' 
 # SAMPLE_RANGE_NAME = 'A1:E'
 SAMPLE_RANGE_NAME = 'A:Z'
 
@@ -47,15 +49,20 @@ def main():
         sheet = service.spreadsheets()
         result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                     range=SAMPLE_RANGE_NAME).execute()
-        values = result.get('values', [])
+        values = np.array(result.get('values', []))
+        user_values = values[1:]
+        print(user_values)
+        # print(user_values[user_values[:, 2].argsort()])
+        # print(user_values[user_values[:, 5].argsort()])
+        
 
-        if not values:
+        if values.shape == (0,0):
             print('No data found.')
             return
 
         # print('Name, Major:')
-        for row in values:
-            print(row)
+        # for row in values:
+        #     print(row)
             # for i in values:
             # # Print columns A and E, which correspond to indices 0 and 4.
             #     print('%s, %s' % (row[0], row[i]))
