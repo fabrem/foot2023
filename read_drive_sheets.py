@@ -15,6 +15,7 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 # The ID and range of a sample spreadsheet.
 # SAMPLE_SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
 # SAMPLE_SPREADSHEET_ID='1peqqPz2FFA1kUzsPIkNK7F5bpgkSTGgV2-p6TBd933w' 
+SPREADSHEET_IDS_IN_WEEK_ORDER = ['1wlO0VSE_ZE0Gw9flqciO7fU87XPclArfkI1DsBHIpAo', '1Cor_aDB9fmUKWV4qyRP_9wQ7RIrCdyhF_r0XSanU8FA', '1peqqPz2FFA1kUzsPIkNK7F5bpgkSTGgV2-p6TBd933w', 'binou']
 SAMPLE_SPREADSHEET_ID='1Cor_aDB9fmUKWV4qyRP_9wQ7RIrCdyhF_r0XSanU8FA' 
 # SAMPLE_RANGE_NAME = 'A1:E'
 SAMPLE_RANGE_NAME = 'A:Z'
@@ -42,32 +43,45 @@ def main():
         with open('token.json', 'w') as token:
             token.write(creds.to_json())
 
-    try:
-        service = build('sheets', 'v4', credentials=creds)
+    service = build('sheets', 'v4', credentials=creds)
 
-        # Call the Sheets API
-        sheet = service.spreadsheets()
-        result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                                    range=SAMPLE_RANGE_NAME).execute()
+    # Call the Sheets API
+    sheet = service.spreadsheets()
+    results = []
+    sorted_results = []
+
+    for index, spreadsheet_id in enumerate(SPREADSHEET_IDS_IN_WEEK_ORDER):
+        try:
+            result = sheet.values().get(spreadsheetId=spreadsheet_id,
+                                        range=SAMPLE_RANGE_NAME).execute()
+            results.append(result)
+
+        except HttpError as err:
+            results.append({"values": []})
+            print(f"cannot fetch data for week {index + 1}")
+            print()
+            
+    for result in results:
         values = np.array(result.get('values', []))
+
+        if len(values) == 0:
+            sorted_results.append([])
+            continue
+
         user_values = values[1:]
-        print(user_values)
-        # print(user_values[user_values[:, 2].argsort()])
-        # print(user_values[user_values[:, 5].argsort()])
-        
+        user_values[:, 1] = np.char.lower(user_values[:, 1])
+        sorted_results.append(user_values[user_values[:, 1].argsort()])
+    
 
-        if values.shape == (0,0):
-            print('No data found.')
-            return
+    week1 = np.array(sorted_results[0]) 
+    week2 = np.array(sorted_results[1]) 
+    week3 = np.array(sorted_results[2]) 
+    week4 = np.array(sorted_results[3]) 
 
-        # print('Name, Major:')
-        # for row in values:
-        #     print(row)
-            # for i in values:
-            # # Print columns A and E, which correspond to indices 0 and 4.
-            #     print('%s, %s' % (row[0], row[i]))
-    except HttpError as err:
-        print(err)
+    week1 = np.delete(week1, [0, 2, -2, -1], axis=1)
+    print(week2)
+    all_data = []
+
 
 
 if __name__ == '__main__':
