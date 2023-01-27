@@ -33,11 +33,56 @@ def frais_new_writer(scoreboard, games):
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-</head>'''
-    body = '''<h4>amigos</h4>
+</head>
+
+<section class="main-content">
+		<div class="container">
+			<h1 style="color: white;text-align: center; font-size: 40px;">Podium</h1>
+			<br>
+			<br>
+	<div class="row">
+'''
+
+    body = f'''<div class="col-sm-4"> <div class="leaderboard-card leaderboard-card--first"> <div class="leaderboard-card__top">
+                <h3 class="text-center">{scoreboard[0][1]}</h3>
+                </div> <div class="leaderboard-card__body"> <div class="text-center"> <img src="img/user1.jpg" class="circle-img mb-2" alt="User Img">
+                <h5 class="mb-0">{scoreboard[0][0]}</h5>
+                <hr> <div class="d-flex justify-content-between align-items-center"> </div> </div> </div> </div> </div>'''
+
+    body += f'''<div class="col-sm-4">
+					<div class="leaderboard-card">
+						<div class="leaderboard-card__top">
+							<h3 class="text-center">{scoreboard[1][1]}</h3>
+						</div>
+						<div class="leaderboard-card__body">
+							<div class="text-center">
+								<img src="img/user2.jpg" class="circle-img mb-2" alt="User Img">
+								<h5 class="mb-0">{scoreboard[1][0]}</h5>
+								<hr>
+							</div>
+						</div>
+					</div>
+				</div>'''
+
+    body += f'''<div class="col-sm-4">
+					<div class="leaderboard-card">
+						<div class="leaderboard-card__top">
+							<h3 class="text-center">{scoreboard[2][1]}</h3>
+						</div>
+						<div class="leaderboard-card__body">
+							<div class="text-center">
+								<img src="img/user2.jpg" class="circle-img mb-2" alt="User Img">
+								<h5 class="mb-0">{scoreboard[2][0]}</h5>
+								<hr>
+							</div>
+						</div>
+					</div>
+				</div>'''
+
+    body += '''
       <table class="table">'''
 
-    for ti_gars in scoreboard:
+    for ti_gars in scoreboard[3:]:
         body += f'''
               
                     <tbody>
@@ -45,13 +90,13 @@ def frais_new_writer(scoreboard, games):
                             <td>
                                 <div class="d-flex align-items-center">
                                     <div class="user-info__basic">
-                                        <h5 class="mb-0">{ti_gars[0] + ": " + str(ti_gars[1])}</h5>
+                                        <h5 class="mb-0">{ti_gars[0]}</h5>
                                     </div>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-baseline">
-                                    <h4 class="mr-1">$1,012</h4><small class="text-success"><i class="fa fa-arrow-up"></i>0</small>
+                                    <h4 class="mr-1">{ti_gars[1]}</h4><small class="text-success"><i class="fa fa-arrow-up"></i>0</small>
                                 </div>
                             </td>
                         </tr>
@@ -67,3 +112,9 @@ def frais_new_writer(scoreboard, games):
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>'''
+
+    text = header + body + footer
+    f = open("index.html", "w")
+    f.write(text)
+    f.close()
+
