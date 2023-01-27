@@ -7,13 +7,13 @@ def write_to_index_html_file(scoreboard, games):
 
     for ti_gars in scoreboard:
         body += "<li>" + ti_gars[0] + ": " + str(ti_gars[1]) + "</li>" + "\n"
-    
+
     body += "</ul> </h4>"
     body += '''<h7 class="motto" style="font-size: large;"><ul style="list-style: none; display: inline;">''' + "\n"
 
     for game in games:
         body += "<li>" + game + "</li>" + "\n"
-    
+
     body += "</ul></h7>"
 
     footer = ' <!-- <div class="subscribe"> <h5 class="info-text"> Join the waiting list for the beta. We keep you posted.  </h5> <div class="row"> <div class="col-md-4 col-md-offset-4 col-sm6-6 col-sm-offset-3 "> <form class="form-inline" role="form"> <div class="form-group"> <label class="sr-only" for="exampleInputEmail2">Email address</label> <input type="email" class="form-control transparent" placeholder="Your email here..."> </div> <button type="submit" class="btn btn-danger btn-fill">Notify Me</button> </form> </div> </div> </div> --> </div> </div> <div class="footer"> <!-- <div class="container"> Made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>. Free download <a href="http://www.creative-tim.com/product/coming-sssoon-page">here.</a> </div> --> </div> </div> </article> </body> <script src="js/jquery-1.10.2.js" type="text/javascript"></script> <script src="js/bootstrap.min.js" type="text/javascript"></script> </html>'
@@ -21,4 +21,49 @@ def write_to_index_html_file(scoreboard, games):
     f = open("index.html", "w")
     f.write(text)
     f.close()
-    
+
+
+def frais_new_writer(scoreboard, games):
+    header = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FOOT</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>'''
+    body = '''<h4>amigos</h4>
+      <table class="table">'''
+
+    for ti_gars in scoreboard:
+        body += f'''
+              
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="user-info__basic">
+                                        <h5 class="mb-0">{ti_gars[0] + ": " + str(ti_gars[1])}</h5>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-baseline">
+                                    <h4 class="mr-1">$1,012</h4><small class="text-success"><i class="fa fa-arrow-up"></i>0</small>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                '''
+
+    footer = '''	</table>
+    	</div>
+	</section>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>'''
