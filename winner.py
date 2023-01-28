@@ -3,6 +3,7 @@ import numpy as np
 import re
 from writer import frais_new_writer, write_to_index_html_file
 from fetch_todays_games import fetch_todays_game, fetch_todays_game_charlem
+from read_drive_sheets import read_drive_sheets
 
 # Important, faire (winner, loser) dans les scores
 WEEK1_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34, 13)),
@@ -47,23 +48,19 @@ POINTS = [[POINTS_FOR_GOOD_TEAM_WEEK_1, POINTS_FOR_CORRECT_SCORE_WEEK_1, POINTS_
 
 OVER_UNDERS = [42, 47.5, 43.5, 48, 40.5, 45.5, 53, 48, 49, 46]
 
-excel = pd.read_excel("./excel/tourner-dans-le-vide.xlsx")
-
-# changer les chiffres pour adapt au excel
-df = excel.T[STARTING_INDEX: STARTING_INDEX +
-             3 * NUMBER_OF_GAMES_TO_CONSIDER].T
-
+df = read_drive_sheets()
 
 score_final_chaque_ti_gars = np.zeros(9)
-noms_des_ti_gars = excel.iloc[:, 1]
+noms_des_ti_gars = df[:, 0]
 
 good_score_winners_for_each_game = [[] for i in range(len(ALL_DATA))]
 lowest_score_in_absolute = np.inf * np.ones(len(OVER_UNDERS))
 
 
-for ti_gars_number, row in df.iterrows():
+for ti_gars_number, row in enumerate(df.T[1:NUMBER_OF_GAMES_TO_CONSIDER*3].T):
 
     for index, cell in enumerate(row):
+        print(cell)
 
         cell = cell.lower()
         points_for_game = []
@@ -123,6 +120,7 @@ for ti_gars_number, row in df.iterrows():
                 score_final_chaque_ti_gars[ti_gars_number] += points_for_game[2]
             else:
                 pass  # no points
+    print("===========")
 
 
 # ADD POINTS FOR GOOD SCORE (HAS TO DO AFTER)

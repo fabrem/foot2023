@@ -22,7 +22,7 @@ SAMPLE_RANGE_NAME = 'A:Z'
 NUMBER_OF_PLAYERS = 9
 
 
-def main():
+def read_drive_sheets():
     """Shows basic usage of the Sheets API.
     Prints values from a sample spreadsheet.
     """
@@ -110,4 +110,4 @@ def main():
 
 
 if __name__ == '__main__':
-    print(main())
+    print(read_drive_sheets())
