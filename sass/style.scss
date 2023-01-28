@@ -16,7 +16,7 @@ body {
 }
 
 .leaderboard-card {
-	background: #fff;
+	background: rgb(61, 53, 53);
 	margin-bottom: 30px;
 	border-radius: 5px;
 	overflow: hidden;
@@ -25,7 +25,7 @@ body {
 		transform: scale(1.05);
 		.leaderboard-card__top {
 			background: linear-gradient(45deg, #ffd900, #ffbb00);
-			color: #fff;
+			color: rgb(255, 251, 0);
 		}
 	}
 	&__top {

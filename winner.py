@@ -46,7 +46,7 @@ POINTS = [[POINTS_FOR_GOOD_TEAM_WEEK_1, POINTS_FOR_CORRECT_SCORE_WEEK_1, POINTS_
               POINTS_FOR_OVER_UNDER_WEEK_3],
           [POINTS_FOR_GOOD_TEAM_WEEK_4, POINTS_FOR_CORRECT_SCORE_WEEK_4, POINTS_FOR_OVER_UNDER_WEEK_4]]
 
-OVER_UNDERS = [42, 47.5, 43.5, 48, 40.5, 45.5, 53, 48, 49, 46]
+OVER_UNDERS = [42, 47.5, 43.5, 48, 40.5, 45.5, 53, 48, 49, 46, 46, 48]
 
 df = read_drive_sheets()
 
@@ -60,7 +60,6 @@ lowest_score_in_absolute = np.inf * np.ones(len(OVER_UNDERS))
 for ti_gars_number, row in enumerate(df.T[1:NUMBER_OF_GAMES_TO_CONSIDER*3].T):
 
     for index, cell in enumerate(row):
-        print(cell)
 
         cell = cell.lower()
         points_for_game = []
@@ -81,7 +80,6 @@ for ti_gars_number, row in enumerate(df.T[1:NUMBER_OF_GAMES_TO_CONSIDER*3].T):
             points_for_game = POINTS[3]
 
         else:
-            print(game_number)
             raise Exception("wat")
 
         if index % 3 == 0:  # good team
@@ -120,7 +118,6 @@ for ti_gars_number, row in enumerate(df.T[1:NUMBER_OF_GAMES_TO_CONSIDER*3].T):
                 score_final_chaque_ti_gars[ti_gars_number] += points_for_game[2]
             else:
                 pass  # no points
-    print("===========")
 
 
 # ADD POINTS FOR GOOD SCORE (HAS TO DO AFTER)

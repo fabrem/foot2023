@@ -12,12 +12,7 @@ from googleapiclient.errors import HttpError
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
-# The ID and range of a sample spreadsheet.
-# SAMPLE_SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
-# SAMPLE_SPREADSHEET_ID='1peqqPz2FFA1kUzsPIkNK7F5bpgkSTGgV2-p6TBd933w' 
 SPREADSHEET_IDS_IN_WEEK_ORDER = ['1wlO0VSE_ZE0Gw9flqciO7fU87XPclArfkI1DsBHIpAo', '1Cor_aDB9fmUKWV4qyRP_9wQ7RIrCdyhF_r0XSanU8FA', '1peqqPz2FFA1kUzsPIkNK7F5bpgkSTGgV2-p6TBd933w', 'binou']
-SAMPLE_SPREADSHEET_ID='1Cor_aDB9fmUKWV4qyRP_9wQ7RIrCdyhF_r0XSanU8FA' 
-# SAMPLE_RANGE_NAME = 'A1:E'
 SAMPLE_RANGE_NAME = 'A:Z'
 NUMBER_OF_PLAYERS = 9
 
@@ -94,11 +89,9 @@ def read_drive_sheets():
         print("ignore at least a week")
 
     weeks = [week1, week2, week3, week4]
-    print(weeks)
     all_data = []
 
     for week in weeks:
-        print(week.shape)
         if week.shape[0] != NUMBER_OF_PLAYERS:
             print("not all bastards have answered the form yet!")
         elif len(all_data) == 0:

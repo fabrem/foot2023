@@ -37,7 +37,7 @@ def frais_new_writer(scoreboard, games):
 
 <section class="main-content">
 		<div class="container">
-			<h1 style="color: white;text-align: center; font-size: 40px;">Scoreboard</h1>
+			<h1 style="color: white;text-align: center; font-size: 100px;">Scoreboard</h1>
 			<br>
 			<br>
 	<div class="row">
@@ -50,7 +50,7 @@ def frais_new_writer(scoreboard, games):
                 <hr> <div class="d-flex justify-content-between align-items-center"> </div> </div> </div> </div> </div>'''
 
     body += f'''<div class="col-sm-4">
-					<div class="leaderboard-card">
+					<div class="leaderboard-card leaderboard-card--second">
 						<div class="leaderboard-card__top">
 							<h3 class="text-center">{scoreboard[1][1]}</h3>
 						</div>
@@ -65,7 +65,7 @@ def frais_new_writer(scoreboard, games):
 				</div>'''
 
     body += f'''<div class="col-sm-4">
-					<div class="leaderboard-card">
+					<div class="leaderboard-card leaderboard-card--third">
 						<div class="leaderboard-card__top">
 							<h3 class="text-center">{scoreboard[2][1]}</h3>
 						</div>
@@ -102,17 +102,16 @@ def frais_new_writer(scoreboard, games):
                         </tr>
                     </tbody>
                 '''
+    body += '''
+      </table>'''
 
-    footer = '''<h7 class="motto" style="font-size: large;"><ul style="list-style: none; display: inline;">''' + "\n"
-
+    body += "<ul>"
     for game in games:
-        body += "<li>" + game + "</li>" + "\n"
+        body += f'<li style="color: white; list-type: none"><h4> {game} </h4></li>' + "\n"
+    body += "</ul>"
 
-    footer += "</ul></h7>"
-    footer += '''	</table>
-    	</div>
-	</section>
-	
+
+    footer = '''
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
