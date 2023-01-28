@@ -62,5 +62,4 @@ def fetch_todays_game_charlem():
             formatted_matches.append((team1[0].split(" ")[-1].lower(), (int(team1[1]), int(team2[1]))))
         else:
             formatted_matches.append((team2[0].split(" ")[-1].lower(), (int(team2[1]), int(team1[1]))))
-    
     return formatted_matches

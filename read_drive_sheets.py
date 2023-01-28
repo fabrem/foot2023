@@ -19,6 +19,7 @@ SPREADSHEET_IDS_IN_WEEK_ORDER = ['1wlO0VSE_ZE0Gw9flqciO7fU87XPclArfkI1DsBHIpAo',
 SAMPLE_SPREADSHEET_ID='1Cor_aDB9fmUKWV4qyRP_9wQ7RIrCdyhF_r0XSanU8FA' 
 # SAMPLE_RANGE_NAME = 'A1:E'
 SAMPLE_RANGE_NAME = 'A:Z'
+NUMBER_OF_PLAYERS = 9
 
 
 def main():
@@ -50,6 +51,7 @@ def main():
     results = []
     sorted_results = []
 
+    name_index_each_week = [1, 2, 2, 2]
     for index, spreadsheet_id in enumerate(SPREADSHEET_IDS_IN_WEEK_ORDER):
         try:
             result = sheet.values().get(spreadsheetId=spreadsheet_id,
@@ -61,16 +63,19 @@ def main():
             print(f"cannot fetch data for week {index + 1}")
             print()
             
-    for result in results:
+    for index, result in enumerate(results):
         values = np.array(result.get('values', []))
 
         if len(values) == 0:
             sorted_results.append([])
             continue
 
+        # remove timestamp, it's useless
         user_values = values[1:]
-        user_values[:, 1] = np.char.lower(user_values[:, 1])
-        sorted_results.append(user_values[user_values[:, 1].argsort()])
+
+        # sort by name
+        user_values[:, name_index_each_week[index]] = np.char.lower(user_values[:, name_index_each_week[index]])
+        sorted_results.append(user_values[user_values[:, name_index_each_week[index]].argsort()])
     
 
     week1 = np.array(sorted_results[0]) 
@@ -78,11 +83,31 @@ def main():
     week3 = np.array(sorted_results[2]) 
     week4 = np.array(sorted_results[3]) 
 
-    week1 = np.delete(week1, [0, 2, -2, -1], axis=1)
-    print(week2)
+    # remove useless columns
+    try:
+        week1 = np.delete(week1, [0, 2, -2, -1], axis=1)
+        week2 = np.delete(week2, [0, 1, 2], axis=1)
+        week3 = np.delete(week3, [0, 1, 2, -1], axis=1)
+        week4 = np.delete(week4, [0, 1, 2, -1], axis=1)
+    except np.AxisError:
+        # a week drive is not in the right format, which means some stupid guy hasn't responded yet
+        print("ignore at least a week")
+
+    weeks = [week1, week2, week3, week4]
+    print(weeks)
     all_data = []
 
+    for week in weeks:
+        print(week.shape)
+        if week.shape[0] != NUMBER_OF_PLAYERS:
+            print("not all bastards have answered the form yet!")
+        elif len(all_data) == 0:
+            all_data = week
+        else:
+            all_data = np.hstack((all_data, week))
+
+    return all_data
 
 
 if __name__ == '__main__':
-    main()
+    print(main())
