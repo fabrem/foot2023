@@ -103,7 +103,13 @@ def frais_new_writer(scoreboard, games):
                     </tbody>
                 '''
 
-    footer = '''	</table>
+    footer = '''<h7 class="motto" style="font-size: large;"><ul style="list-style: none; display: inline;">''' + "\n"
+
+    for game in games:
+        body += "<li>" + game + "</li>" + "\n"
+
+    footer += "</ul></h7>"
+    footer += '''	</table>
     	</div>
 	</section>
 	
