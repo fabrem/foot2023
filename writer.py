@@ -37,7 +37,7 @@ def frais_new_writer(scoreboard, games):
 
 <section class="main-content">
 		<div class="container">
-			<h1 style="color: white;text-align: center; font-size: 80px;">Scoreboard</h1>
+			<h1 style="color: white;text-align: center; font-size: 70px;">Scoreboard</h1>
 			<br>
 			<br>
 	<div class="row">
