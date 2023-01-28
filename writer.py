@@ -71,7 +71,7 @@ def frais_new_writer(scoreboard, games):
 						</div>
 						<div class="leaderboard-card__body">
 							<div class="text-center">
-								<img src="img/user2.jpg" class="circle-img mb-2" alt="User Img">
+								<img src="img/user3.jpg" class="circle-img mb-2" alt="User Img">
 								<h5 class="mb-0">{scoreboard[2][0]}</h5>
 								<hr>
 							</div>
