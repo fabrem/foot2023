@@ -29,7 +29,7 @@ def frais_new_writer(scoreboard, games):
 <head>
 	<meta charset="UTF-8">
 	<title>FOOT</title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<meta charset="utf-8" /> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' /> <meta name="viewport" content="width=device-width" />
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -37,7 +37,7 @@ def frais_new_writer(scoreboard, games):
 
 <section class="main-content">
 		<div class="container">
-			<h1 style="color: white;text-align: center; font-size: 100px;">Scoreboard</h1>
+			<h1 style="color: white;text-align: center; font-size: 80px;">Scoreboard</h1>
 			<br>
 			<br>
 	<div class="row">
