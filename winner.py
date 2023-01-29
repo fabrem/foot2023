@@ -14,7 +14,15 @@ WEEK2_DATA = [("chiefs", (27, 20)), ("eagles", (38, 7)),
 WEEK3_DATA = fetch_todays_game_charlem()
 WEEK4_DATA = []
 
-ALL_DATA = WEEK1_DATA + WEEK2_DATA + WEEK3_DATA + WEEK4_DATA
+ALL_DATA_TEMP = WEEK1_DATA + WEEK2_DATA + WEEK3_DATA + WEEK4_DATA
+ALL_DATA = []
+
+# REMOVE GAMES IF THE SCORE IS 0-0, THEY ARE NOT TO BE CONSIDERED YET
+for game in ALL_DATA_TEMP:
+    if sum(game[1]) != 0:
+        ALL_DATA.append(game)
+
+
 LEN_EACH_WEEK = [len(WEEK1_DATA), len(WEEK2_DATA), len(WEEK3_DATA), len(WEEK4_DATA)]
 
 # WEEK 1 SCORING
@@ -67,11 +75,9 @@ def calculate_scoreboard(df, score_final_chaque_ti_gars, noms_des_ti_gars, numbe
                 points_for_game = POINTS[0]
 
             elif game_number <= len(WEEK2_DATA) + len(WEEK1_DATA):
-                print(game_number)
                 points_for_game = POINTS[1]
 
             elif game_number <= len(WEEK3_DATA) + len(WEEK2_DATA) + len(WEEK1_DATA):
-                print("lalo")
                 points_for_game = POINTS[2]
 
             elif game_number <= len(WEEK4_DATA) + len(WEEK3_DATA) + len(WEEK2_DATA) + len(WEEK1_DATA):
