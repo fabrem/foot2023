@@ -23,7 +23,7 @@ def write_to_index_html_file(scoreboard, games):
     f.close()
 
 
-def frais_new_writer(scoreboard, games):
+def frais_new_writer(scoreboard, games, fleches):
     header = '''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,9 +44,9 @@ def frais_new_writer(scoreboard, games):
 '''
 
     body = f'''<div class="col-sm-4"> <div class="leaderboard-card leaderboard-card--first"> <div class="leaderboard-card__top">
-                <h3 class="text-center">{scoreboard[0][1]}</h3>
+                <h3 class="text-center">{scoreboard[0][1]}</h3> 
                 </div> <div class="leaderboard-card__body"> <div class="text-center"> <img src="img/user1.jpg" class="circle-img mb-2" alt="User Img">
-                <h5 class="mb-0">{scoreboard[0][0]}</h5>
+                <h5 class="mb-0">{scoreboard[0][0]}</h5><small class="text-success"><i class="fa fa-arrow-up"></i>{fleches[0][1]}</small>
                 <hr> <div class="d-flex justify-content-between align-items-center"> </div> </div> </div> </div> </div>'''
 
     body += f'''<div class="col-sm-4">
@@ -57,7 +57,7 @@ def frais_new_writer(scoreboard, games):
 						<div class="leaderboard-card__body">
 							<div class="text-center">
 								<img src="img/user2.jpg" class="circle-img mb-2" alt="User Img">
-								<h5 class="mb-0">{scoreboard[1][0]}</h5>
+								<h5 class="mb-0">{scoreboard[1][0]}</h5><small class="text-success"><i class="fa fa-arrow-up"></i>{fleches[1][1]}</small>
 								<hr>
 							</div>
 						</div>
@@ -72,7 +72,7 @@ def frais_new_writer(scoreboard, games):
 						<div class="leaderboard-card__body">
 							<div class="text-center">
 								<img src="img/user3.jpg" class="circle-img mb-2" alt="User Img">
-								<h5 class="mb-0">{scoreboard[2][0]}</h5>
+								<h5 class="mb-0">{scoreboard[2][0]}</h5><small class="text-success"><i class="fa fa-arrow-up"></i>{fleches[2][1]}</small>
 								<hr>
 							</div>
 						</div>
@@ -82,26 +82,48 @@ def frais_new_writer(scoreboard, games):
     body += '''
       <table class="table">'''
 
-    for ti_gars in scoreboard[3:]:
-        body += f'''
-              
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <div class="user-info__basic">
-                                        <h5 class="mb-0">{ti_gars[0]}</h5>
+    for index, ti_gars in enumerate(scoreboard[3:]):
+        if ti_gars[0] == 'casper maître fantôme 👻':
+            body += f'''
+                
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-info__basic">
+                                            <h5 class="mb-0">{ti_gars[0]}</h5>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex align-items-baseline">
-                                    <h4 class="mr-1">{ti_gars[1]}</h4><small class="text-success"><i class="fa fa-arrow-up"></i>0</small>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                '''
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-baseline">
+                                        <h4 class="mr-1">{ti_gars[1]}</h4><small class="text-danger"><i class="fa fa-arrow-down"></i>{fleches[index][1]}</small>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    '''
+        else:
+            body += f'''
+                
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-info__basic">
+                                            <h5 class="mb-0">{ti_gars[0]}</h5>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-baseline">
+                                        <h4 class="mr-1">{ti_gars[1]}</h4><small class="text-success"><i class="fa fa-arrow-up"></i>{fleches[index][1]}</small>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    '''
+
     body += '''
       </table>'''
 

@@ -155,9 +155,11 @@ def calculate_scoreboard(df, score_final_chaque_ti_gars, noms_des_ti_gars, numbe
 
 
 
-def print_and_save_scoreboard(noms_des_ti_gars, score_final_chaque_ti_gars):
+def print_and_save_scoreboard(noms_des_ti_gars, score_final_chaque_ti_gars, fleches):
     scoreboard, games = print_scoreboard(noms_des_ti_gars, score_final_chaque_ti_gars)
-    frais_new_writer(scoreboard, games)
+    order_list=[x[0] for x in scoreboard]
+    sorted_fleches = sorted(fleches, key=lambda x: order_list.index(x[0]))
+    frais_new_writer(scoreboard, games, sorted_fleches)
 
 
 
@@ -197,11 +199,9 @@ def main():
     calculate_scoreboard(df, score_final_chaque_ti_gars, noms_des_ti_gars, NUMBER_OF_GAMES_TO_CONSIDER)
     calculate_scoreboard(df, score_final_chaque_ti_gars_semaine_davant, noms_des_ti_gars, NUMBER_OF_GAMES_TO_CONSIDER_PREVIOUS_WEEK)
 
-    fleches = zip(noms_des_ti_gars, score_final_chaque_ti_gars - score_final_chaque_ti_gars_semaine_davant)
-    for i in fleches:
-        print(i)
+    fleches = list(zip(noms_des_ti_gars, score_final_chaque_ti_gars - score_final_chaque_ti_gars_semaine_davant))
 
-    print_and_save_scoreboard(noms_des_ti_gars, score_final_chaque_ti_gars)
+    print_and_save_scoreboard(noms_des_ti_gars, score_final_chaque_ti_gars, fleches)
     print_scoreboard(noms_des_ti_gars, score_final_chaque_ti_gars_semaine_davant)
 
 
