@@ -48,6 +48,7 @@ POINTS = [[POINTS_FOR_GOOD_TEAM_WEEK_1, POINTS_FOR_CORRECT_SCORE_WEEK_1, POINTS_
 
 OVER_UNDERS = [42, 47.5, 43.5, 48, 40.5, 45.5, 53, 48, 49, 46, 46, 48]
 
+# TODO avec charlem - faire un autre df avec une week de moins et faire la diff des scores pr la fleche verte
 df = read_drive_sheets()
 
 score_final_chaque_ti_gars = np.zeros(9)
