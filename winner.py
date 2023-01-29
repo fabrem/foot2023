@@ -35,7 +35,7 @@ POINTS_FOR_OVER_UNDER_WEEK_4 = 2
 POINTS_FOR_CORRECT_SCORE_WEEK_4 = 5
 POINTS_FOR_GOOD_TEAM_WEEK_4 = 13
 
-# si on veut moins de games, changer ici
+# TODO changer pour games ou score != 0
 NUMBER_OF_GAMES_TO_CONSIDER = len(ALL_DATA)
 STARTING_INDEX = 3
 
