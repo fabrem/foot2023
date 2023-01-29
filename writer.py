@@ -105,7 +105,7 @@ def frais_new_writer(scoreboard, games):
     body += '''
       </table>'''
 
-    body += "<ul style="color: white; list-type: none;">"
+    body += '<ul style="color: white; list-type: none;">'
     for game in games:
         body += f'<li><h4> {game} </h4></li>' + "\n"
     body += "</ul>"
