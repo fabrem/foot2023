@@ -83,6 +83,7 @@ def frais_new_writer(scoreboard, games, fleches):
       <table class="table">'''
 
     for index, ti_gars in enumerate(scoreboard[3:]):
+        index += 3 # we already did top 3 
         if ti_gars[0] == 'casper maître fantôme 👻':
             body += f'''
                 
