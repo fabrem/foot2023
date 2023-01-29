@@ -177,7 +177,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4{
 
 h1, .h1 {
     font-size: 52px;
-    text-shadow: 5px 5px rgb(230, 12, 12);
+    text-shadow: 3px 3px rgb(230, 12, 12);
 }
 h2, .h2{
     font-size: 36px;
