@@ -12,6 +12,7 @@ WEEK1_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34, 13)),
 WEEK2_DATA = [("chiefs", (27, 20)), ("eagles", (38, 7)),
               ("bengals", (27, 10)), ("niners", (19, 12))]
 WEEK3_DATA = fetch_todays_game_charlem()
+WEEK3_DATA.reverse()
 WEEK4_DATA = []
 
 ALL_DATA_TEMP = WEEK1_DATA + WEEK2_DATA + WEEK3_DATA + WEEK4_DATA
@@ -21,6 +22,7 @@ ALL_DATA = []
 for game in ALL_DATA_TEMP:
     if sum(game[1]) != 0:
         ALL_DATA.append(game)
+print(ALL_DATA)
 
 
 LEN_EACH_WEEK = [len(WEEK1_DATA), len(WEEK2_DATA), len(WEEK3_DATA), len(WEEK4_DATA)]
@@ -56,6 +58,7 @@ POINTS = [[POINTS_FOR_GOOD_TEAM_WEEK_1, POINTS_FOR_CORRECT_SCORE_WEEK_1, POINTS_
 
 OVER_UNDERS = [42, 47.5, 43.5, 48, 40.5, 45.5, 53, 48, 49, 46, 46, 48]
 NUMBER_OF_PLAYERS = 9
+
 
 
 def calculate_scoreboard(df, score_final_chaque_ti_gars, noms_des_ti_gars, number_of_games_to_consider):
