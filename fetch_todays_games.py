@@ -65,6 +65,6 @@ def fetch_todays_game_charlem():
             formatted_matches.append((team2[0].split(" ")[-1].lower(), (int(team2[1]), int(team1[1])), match[-1]))
         
     # sort by key here, match time
-    return sorted(formatted_matches, key=lambda x: datetime.fromisoformat(x[-1]))
+    return sorted(formatted_matches, key=lambda x: datetime.strptime(x[-1],"%Y-%m-%dT%H:%M%f%Z"))
 
 print(fetch_todays_game_charlem())
