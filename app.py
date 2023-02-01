@@ -7,4 +7,5 @@ os.environ['FLASK_APP'] = "app.py"
 
 @app.route("/", methods=['GET'])
 def scoreboard():
+    #return "salut les amis"
     return render_template("index.html")
