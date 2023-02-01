@@ -67,4 +67,4 @@ def fetch_todays_game_charlem():
     # sort by key here, match time
     return sorted(formatted_matches, key=lambda x: datetime.strptime(x[-1],"%Y-%m-%dT%H:%MZ"))
 
-print(fetch_todays_game_charlem())
+# print(fetch_todays_game_charlem())
