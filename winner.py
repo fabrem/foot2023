@@ -11,7 +11,8 @@ WEEK1_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34, 13)),
               ('giants (beurk)', (24, 31)), ('bengals', (24, 17)), ('cowboys', (31, 14))]
 WEEK2_DATA = [("chiefs", (27, 20)), ("eagles", (38, 7)),
               ("bengals", (27, 10)), ("niners", (19, 12))]
-WEEK3_DATA = fetch_todays_game_charlem()
+# WEEK3_DATA = fetch_todays_game_charlem()
+WEEK3_DATA = [('eagles', (31, 7), '2023-01-29T20:00Z'), ('chiefs', (23, 20), '2023-01-29T23:30Z')]
 WEEK4_DATA = []
 
 ALL_DATA_TEMP = WEEK1_DATA + WEEK2_DATA + WEEK3_DATA + WEEK4_DATA

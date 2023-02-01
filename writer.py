@@ -142,5 +142,8 @@ def frais_new_writer(scoreboard, games, fleches):
 </html>'''
 
     text = header + body + footer
+    with open("templates/index.html", "w", encoding="utf-8") as f:
+        f.write(text)
+    # remove one of them...
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(text)
