@@ -142,7 +142,5 @@ def frais_new_writer(scoreboard, games, fleches):
 </html>'''
 
     text = header + body + footer
-    f = open("index.html", "w")
-    f.write(text)
-    f.close()
-
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(text)
