@@ -83,7 +83,7 @@ def read_drive_sheets():
         week1 = np.delete(week1, [0, 2, -2, -1], axis=1)
         week2 = np.delete(week2, [0, 1, 2], axis=1)
         week3 = np.delete(week3, [0, 1, 2, -1], axis=1)
-        week4 = np.delete(week4, [0, 1, 2, -1], axis=1)
+        week4 = np.delete(week4, [0, 1, 2, 3, -1, -2], axis=1)
     except np.AxisError:
         # a week drive is not in the right format, which means some stupid guy hasn't responded yet
         print("ignore at least a week")
