@@ -6,7 +6,7 @@ from fetch_todays_games import fetch_todays_game, fetch_todays_game_charlem
 from read_drive_sheets import read_drive_sheets
 
 AFC_teams = [ "ravens", "bills", "bengals", "browns", "broncos", "texans", "colts", "jaguars", "chiefs", "dolphins", "patriots", "jets", "raiders", "steelers", "titans" ] # National Football Conference (NFC) teams 
-NFC_teams = [ "cowboys", "eagles", "giants", "redskins", "bears", "lions", "packers", "vikings", "falcons", "panthers", "saints", "buccaneers", "cardinals", "rams", "49ers", "seahawks" ]
+NFC_teams = [ "cowboys", "eagles", "giants", "commanders", "bears", "lions", "packers", "vikings", "falcons", "panthers", "saints", "buccaneers", "cardinals", "rams", "49ers", "seahawks" ]
 AFC_STRING_FROM_ESPN = "afc"
 NFC_STRING_FROM_ESPN = "nfc"
 
