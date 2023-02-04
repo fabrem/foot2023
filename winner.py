@@ -5,15 +5,25 @@ from writer import frais_new_writer, write_to_index_html_file
 from fetch_todays_games import fetch_todays_game, fetch_todays_game_charlem
 from read_drive_sheets import read_drive_sheets
 
+AFC_teams = [ "ravens", "bills", "bengals", "browns", "broncos", "texans", "colts", "jaguars", "chiefs", "dolphins", "patriots", "jets", "raiders", "steelers", "titans" ] # National Football Conference (NFC) teams 
+NFC_teams = [ "cowboys", "eagles", "giants", "redskins", "bears", "lions", "packers", "vikings", "falcons", "panthers", "saints", "buccaneers", "cardinals", "rams", "49ers", "seahawks" ]
+AFC_STRING_FROM_ESPN = "afc"
+NFC_STRING_FROM_ESPN = "nfc"
 # Important, faire (winner, loser) dans les scores
 # TODO faire que ca ecrit dans un fichier... Pas automatique
 WEEK1_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34, 13)),
               ('giants (beurk)', (24, 31)), ('bengals', (24, 17)), ('cowboys', (31, 14))]
 WEEK2_DATA = [("chiefs", (27, 20)), ("eagles", (38, 7)),
               ("bengals", (27, 10)), ("niners", (19, 12))]
-# WEEK3_DATA = fetch_todays_game_charlem()
 WEEK3_DATA = [('eagles', (31, 7), '2023-01-29T20:00Z'), ('chiefs', (23, 20), '2023-01-29T23:30Z')]
-WEEK4_DATA = []
+TEAMS_TO_ADVANCE = [WEEK3_DATA[0][0], WEEK3_DATA[1][0]]
+WEEK4_DATA = fetch_todays_game_charlem()
+
+for team in TEAMS_TO_ADVANCE:
+    if team in AFC_teams and WEEK4_DATA[0][0] == AFC_STRING_FROM_ESPN:
+        WEEK4_DATA[0] = (team, WEEK4_DATA[0][1], WEEK4_DATA[0][2])
+    elif team in NFC_teams and WEEK4_DATA[0][0] == NFC_STRING_FROM_ESPN:
+        WEEK4_DATA[0] = (team, WEEK4_DATA[0][1], WEEK4_DATA[0][2])
 
 ALL_DATA_TEMP = WEEK1_DATA + WEEK2_DATA + WEEK3_DATA + WEEK4_DATA
 ALL_DATA = []
@@ -22,7 +32,6 @@ ALL_DATA = []
 for game in ALL_DATA_TEMP:
     if sum(game[1]) != 0:
         ALL_DATA.append(game)
-print(ALL_DATA)
 
 
 LEN_EACH_WEEK = [len(WEEK1_DATA), len(WEEK2_DATA), len(WEEK3_DATA), len(WEEK4_DATA)]
@@ -190,7 +199,7 @@ def main():
     df = read_drive_sheets()
 
     # TODO get this shit automatically
-    CURRENT_WEEK = 3
+    CURRENT_WEEK = 4
 
     NUMBER_OF_GAMES_TO_CONSIDER = len(ALL_DATA)
     NUMBER_OF_GAMES_TO_CONSIDER_PREVIOUS_WEEK = sum(LEN_EACH_WEEK[:(CURRENT_WEEK - 1)])

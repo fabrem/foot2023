@@ -42,8 +42,6 @@ def fetch_todays_game_charlem():
     game_time = []
     game_scores = []
 
-    # for index in range(len(events)):
-
     for index, single_game in enumerate(events):
         first_team_score = single_game
         second_team_score = single_game
