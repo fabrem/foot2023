@@ -9,8 +9,10 @@ AFC_teams = [ "ravens", "bills", "bengals", "browns", "broncos", "texans", "colt
 NFC_teams = [ "cowboys", "eagles", "giants", "redskins", "bears", "lions", "packers", "vikings", "falcons", "panthers", "saints", "buccaneers", "cardinals", "rams", "49ers", "seahawks" ]
 AFC_STRING_FROM_ESPN = "afc"
 NFC_STRING_FROM_ESPN = "nfc"
+
 # Important, faire (winner, loser) dans les scores
 # TODO faire que ca ecrit dans un fichier... Pas automatique
+# apres une certaine date, au lieu de faire un get a espn, on va chercher ce qui est ecrit dans le fichier
 WEEK1_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34, 13)),
               ('giants (beurk)', (24, 31)), ('bengals', (24, 17)), ('cowboys', (31, 14))]
 WEEK2_DATA = [("chiefs", (27, 20)), ("eagles", (38, 7)),
@@ -65,7 +67,10 @@ POINTS = [[POINTS_FOR_GOOD_TEAM_WEEK_1, POINTS_FOR_CORRECT_SCORE_WEEK_1, POINTS_
               POINTS_FOR_OVER_UNDER_WEEK_3],
           [POINTS_FOR_GOOD_TEAM_WEEK_4, POINTS_FOR_CORRECT_SCORE_WEEK_4, POINTS_FOR_OVER_UNDER_WEEK_4]]
 
+# TODO avoir les over under automatiquement?? 2024
 OVER_UNDERS = [42, 47.5, 43.5, 48, 40.5, 45.5, 53, 48, 49, 46, 46, 48]
+
+# TODO get automatically 2024
 NUMBER_OF_PLAYERS = 9
 
 
@@ -198,7 +203,7 @@ def print_scoreboard(noms_des_ti_gars, score_final_chaque_ti_gars):
 def main():
     df = read_drive_sheets()
 
-    # TODO get this shit automatically
+    # TODO get this shit automatically 2024
     CURRENT_WEEK = 4
 
     NUMBER_OF_GAMES_TO_CONSIDER = len(ALL_DATA)

@@ -12,8 +12,14 @@ from googleapiclient.errors import HttpError
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
-SPREADSHEET_IDS_IN_WEEK_ORDER = ['1wlO0VSE_ZE0Gw9flqciO7fU87XPclArfkI1DsBHIpAo', '1Cor_aDB9fmUKWV4qyRP_9wQ7RIrCdyhF_r0XSanU8FA', '1peqqPz2FFA1kUzsPIkNK7F5bpgkSTGgV2-p6TBd933w', '1Ld2YRUs5VfJXyYFM0QuoM4JNI4rh1zMwZuKcbWjJjFY']
+# TODO changer les links 2024
+SPREADSHEET_IDS_IN_WEEK_ORDER = ['1wlO0VSE_ZE0Gw9flqciO7fU87XPclArfkI1DsBHIpAo', 
+                                 '1Cor_aDB9fmUKWV4qyRP_9wQ7RIrCdyhF_r0XSanU8FA', 
+                                 '1peqqPz2FFA1kUzsPIkNK7F5bpgkSTGgV2-p6TBd933w', 
+                                 '1Ld2YRUs5VfJXyYFM0QuoM4JNI4rh1zMwZuKcbWjJjFY']
 SAMPLE_RANGE_NAME = 'A:Z'
+
+# TODO 2024: nombre de joueurs automatique
 NUMBER_OF_PLAYERS = 9
 
 
