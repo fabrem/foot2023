@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: linux-latest
     steps:
       - name: checkout repo content
         uses: actions/checkout@v2 # checkout the repository content
@@ -38,7 +38,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: execute py script # run main.py
-        run: python winner.py
+        run: python src/winner.py
       
       - name: identification
         run: | 
