@@ -1,0 +1,89 @@
+<style>
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.leaderboard-item {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.rank {
+  width: 20%;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+
+.username {
+  width: 60%;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+
+.score {
+  width: 20%;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+
+.leaderboard-item.expanded {
+  background-color: lightgray;
+}
+
+.leaderboard-item .extra-info {
+  display: none;
+  width: 100%;
+  padding: 10px;
+}
+
+.leaderboard-item.expanded .extra-info {
+  display: block;
+}
+</style>
+
+<div class="leaderboard">
+  <div class="leaderboard-item">
+    <div class="rank">1</div>
+    <div class="username">User1</div>
+    <div class="score">100</div>
+    <div class="extra-info">
+      Additional information about user1
+    </div>
+  </div>
+  <div class="leaderboard-item">
+    <div class="rank">2</div>
+    <div class="username">User2</div>
+    <div class="score">90</div>
+    <div class="extra-info">
+      Additional information about user2
+    </div>
+  </div>
+  <div class="leaderboard-item">
+    <div class="rank">3</div>
+    <div class="username">User3</div>
+    <div class="score">80</div>
+    <div class="extra-info">
+      Additional information about user3
+    </div>
+  </div>
+</div>
+
+<script>
+const leaderboardItems = document.querySelectorAll('.leaderboard-item');
+
+leaderboardItems.forEach(item => {
+  item.addEventListener('click', function() {
+    this.classList.toggle('expanded');
+  });
+});
+</script>
