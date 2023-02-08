@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
 import re
-from src.writer import frais_new_writer, write_to_index_html_file
-from src.fetch_todays_games import fetch_todays_game, fetch_todays_game_charlem
-from src.read_drive_sheets import read_drive_sheets
+from writer import frais_new_writer, write_to_index_html_file
+from fetch_todays_games import fetch_todays_game, fetch_todays_game_charlem
+from read_drive_sheets import read_drive_sheets
 
 AFC_teams = [ "ravens", "bills", "bengals", "browns", "broncos", "texans", "colts", "jaguars", "chiefs", "dolphins", "patriots", "jets", "raiders", "steelers", "titans" ] # National Football Conference (NFC) teams 
 NFC_teams = [ "cowboys", "eagles", "giants", "commanders", "bears", "lions", "packers", "vikings", "falcons", "panthers", "saints", "buccaneers", "cardinals", "rams", "49ers", "seahawks" ]

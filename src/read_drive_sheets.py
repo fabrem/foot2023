@@ -57,6 +57,8 @@ def read_drive_sheets():
         try:
             result = sheet.values().get(spreadsheetId=spreadsheet_id,
                                         range=SAMPLE_RANGE_NAME).execute()
+            # if index == 3:
+            #     raise Exception(result)
             results.append(result)
 
         except HttpError as err:
