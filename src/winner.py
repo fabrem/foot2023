@@ -21,11 +21,11 @@ WEEK3_DATA = [('eagles', (31, 7), '2023-01-29T20:00Z'), ('chiefs', (23, 20), '20
 TEAMS_TO_ADVANCE = [WEEK3_DATA[0][0], WEEK3_DATA[1][0]]
 WEEK4_DATA = fetch_todays_game_charlem()
 
-for team in TEAMS_TO_ADVANCE:
-    if team in AFC_teams and WEEK4_DATA[0][0] == AFC_STRING_FROM_ESPN:
-        WEEK4_DATA[0] = (team, WEEK4_DATA[0][1], WEEK4_DATA[0][2])
-    elif team in NFC_teams and WEEK4_DATA[0][0] == NFC_STRING_FROM_ESPN:
-        WEEK4_DATA[0] = (team, WEEK4_DATA[0][1], WEEK4_DATA[0][2])
+#for team in TEAMS_TO_ADVANCE:
+#    if team in AFC_teams and WEEK4_DATA[0][0] == AFC_STRING_FROM_ESPN:
+#        WEEK4_DATA[0] = (team, WEEK4_DATA[0][1], WEEK4_DATA[0][2])
+#    elif team in NFC_teams and WEEK4_DATA[0][0] == NFC_STRING_FROM_ESPN:
+#        WEEK4_DATA[0] = (team, WEEK4_DATA[0][1], WEEK4_DATA[0][2])
 
 ALL_DATA_TEMP = WEEK1_DATA + WEEK2_DATA + WEEK3_DATA + WEEK4_DATA
 ALL_DATA = []
