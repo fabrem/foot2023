@@ -52,7 +52,7 @@ def read_drive_sheets():
     results = []
     sorted_results = []
 
-    name_index_each_week = [1, 2, 2, 2]
+    name_index_each_week = [1, 2, 2, 3]
     for index, spreadsheet_id in enumerate(SPREADSHEET_IDS_IN_WEEK_ORDER):
         try:
             result = sheet.values().get(spreadsheetId=spreadsheet_id,

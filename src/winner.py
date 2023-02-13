@@ -18,7 +18,6 @@ WEEK1_DATA = [('niners', (41, 23)), ('jaguars', (31, 30)), ('bills', (34, 13)),
 WEEK2_DATA = [("chiefs", (27, 20)), ("eagles", (38, 7)),
               ("bengals", (27, 10)), ("niners", (19, 12))]
 WEEK3_DATA = [('eagles', (31, 7), '2023-01-29T20:00Z'), ('chiefs', (23, 20), '2023-01-29T23:30Z')]
-TEAMS_TO_ADVANCE = [WEEK3_DATA[0][0], WEEK3_DATA[1][0]]
 WEEK4_DATA = fetch_todays_game_charlem()
 
 #for team in TEAMS_TO_ADVANCE:
@@ -57,8 +56,6 @@ POINTS_FOR_GOOD_TEAM_WEEK_3 = 8
 POINTS_FOR_OVER_UNDER_WEEK_4 = 2
 POINTS_FOR_CORRECT_SCORE_WEEK_4 = 5
 POINTS_FOR_GOOD_TEAM_WEEK_4 = 13
-
-STARTING_INDEX = 3
 
 POINTS = [[POINTS_FOR_GOOD_TEAM_WEEK_1, POINTS_FOR_CORRECT_SCORE_WEEK_1, POINTS_FOR_OVER_UNDER_WEEK_1],
           [POINTS_FOR_GOOD_TEAM_WEEK_2, POINTS_FOR_CORRECT_SCORE_WEEK_2,
