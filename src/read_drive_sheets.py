@@ -57,8 +57,6 @@ def read_drive_sheets():
         try:
             result = sheet.values().get(spreadsheetId=spreadsheet_id,
                                         range=SAMPLE_RANGE_NAME).execute()
-            # if index == 3:
-            #     raise Exception(result)
             results.append(result)
 
         except HttpError as err:
@@ -88,6 +86,7 @@ def read_drive_sheets():
 
     # remove useless columns
     try:
+        sb_winner = np.char.lower(week1[:, -1])
         week1 = np.delete(week1, [0, 2, -2, -1], axis=1)
         week2 = np.delete(week2, [0, 1, 2], axis=1)
         week3 = np.delete(week3, [0, 1, 2, -1], axis=1)
@@ -106,8 +105,8 @@ def read_drive_sheets():
             all_data = week
         else:
             all_data = np.hstack((all_data, week))
-    print(all_data)
-    return all_data
+    
+    return all_data, sb_winner
 
 
 if __name__ == '__main__':

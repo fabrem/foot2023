@@ -20,12 +20,6 @@ WEEK2_DATA = [("chiefs", (27, 20)), ("eagles", (38, 7)),
 WEEK3_DATA = [('eagles', (31, 7), '2023-01-29T20:00Z'), ('chiefs', (23, 20), '2023-01-29T23:30Z')]
 WEEK4_DATA = fetch_todays_game_charlem()
 
-#for team in TEAMS_TO_ADVANCE:
-#    if team in AFC_teams and WEEK4_DATA[0][0] == AFC_STRING_FROM_ESPN:
-#        WEEK4_DATA[0] = (team, WEEK4_DATA[0][1], WEEK4_DATA[0][2])
-#    elif team in NFC_teams and WEEK4_DATA[0][0] == NFC_STRING_FROM_ESPN:
-#        WEEK4_DATA[0] = (team, WEEK4_DATA[0][1], WEEK4_DATA[0][2])
-
 ALL_DATA_TEMP = WEEK1_DATA + WEEK2_DATA + WEEK3_DATA + WEEK4_DATA
 ALL_DATA = []
 
@@ -57,6 +51,9 @@ POINTS_FOR_OVER_UNDER_WEEK_4 = 2
 POINTS_FOR_CORRECT_SCORE_WEEK_4 = 5
 POINTS_FOR_GOOD_TEAM_WEEK_4 = 13
 
+# SB WINNER POINTS
+SB_WINNER_POINTS = 10
+
 POINTS = [[POINTS_FOR_GOOD_TEAM_WEEK_1, POINTS_FOR_CORRECT_SCORE_WEEK_1, POINTS_FOR_OVER_UNDER_WEEK_1],
           [POINTS_FOR_GOOD_TEAM_WEEK_2, POINTS_FOR_CORRECT_SCORE_WEEK_2,
               POINTS_FOR_OVER_UNDER_WEEK_2],
@@ -70,14 +67,12 @@ OVER_UNDERS = [42, 47.5, 43.5, 48, 40.5, 45.5, 53, 48, 49, 46, 46, 48, 50.5]
 # TODO get automatically 2024
 NUMBER_OF_PLAYERS = 9
 
-
-
-def calculate_scoreboard(df, score_final_chaque_ti_gars, noms_des_ti_gars, number_of_games_to_consider):
+def calculate_scoreboard(df, sb_winner, score_final_chaque_ti_gars, noms_des_ti_gars, number_of_games_to_consider):
     good_score_winners_for_each_game = [[] for i in range(number_of_games_to_consider)]
     lowest_score_in_absolute = np.inf * np.ones(len(OVER_UNDERS))
     for ti_gars_number, row in enumerate(df.T[1:number_of_games_to_consider*3 + 1].T):
-
         for index, cell in enumerate(row):
+            IS_SB = False
 
             cell = cell.lower()
             points_for_game = []
@@ -96,6 +91,7 @@ def calculate_scoreboard(df, score_final_chaque_ti_gars, noms_des_ti_gars, numbe
 
             elif game_number <= len(WEEK4_DATA) + len(WEEK3_DATA) + len(WEEK2_DATA) + len(WEEK1_DATA):
                 points_for_game = POINTS[3]
+                IS_SB = True
 
             else:
                 raise Exception("wat")
@@ -103,6 +99,14 @@ def calculate_scoreboard(df, score_final_chaque_ti_gars, noms_des_ti_gars, numbe
             if index % 3 == 0:  # good team
                 if cell == ALL_DATA[index // 3][0]:
                     score_final_chaque_ti_gars[ti_gars_number] += points_for_game[0]
+
+                    # if IS_SB:
+                    #     raise Exception(cell, sb_winner[ti_gars_number])
+
+                    if IS_SB and cell == sb_winner[ti_gars_number]: # extra points for sb winner prediction
+                        pass
+                        # score_final_chaque_ti_gars[ti_gars_number] += SB_WINNER_POINTS
+
 
             if index % 3 == 1:  # good score
                 previous_cell = row[index - 1].lower()
@@ -198,7 +202,7 @@ def print_scoreboard(noms_des_ti_gars, score_final_chaque_ti_gars):
 
 
 def main():
-    df = read_drive_sheets()
+    df, sb_winner = read_drive_sheets()
 
     # TODO get this shit automatically 2024
     CURRENT_WEEK = 4
@@ -210,8 +214,8 @@ def main():
     score_final_chaque_ti_gars_semaine_davant = np.zeros(NUMBER_OF_PLAYERS)
     noms_des_ti_gars = df[:, 0]
 
-    calculate_scoreboard(df, score_final_chaque_ti_gars, noms_des_ti_gars, NUMBER_OF_GAMES_TO_CONSIDER)
-    calculate_scoreboard(df, score_final_chaque_ti_gars_semaine_davant, noms_des_ti_gars, NUMBER_OF_GAMES_TO_CONSIDER_PREVIOUS_WEEK)
+    calculate_scoreboard(df, sb_winner, score_final_chaque_ti_gars, noms_des_ti_gars, NUMBER_OF_GAMES_TO_CONSIDER)
+    calculate_scoreboard(df, sb_winner, score_final_chaque_ti_gars_semaine_davant, noms_des_ti_gars, NUMBER_OF_GAMES_TO_CONSIDER_PREVIOUS_WEEK)
 
     fleches = list(zip(noms_des_ti_gars, score_final_chaque_ti_gars - score_final_chaque_ti_gars_semaine_davant))
 
