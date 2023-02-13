@@ -100,12 +100,8 @@ def calculate_scoreboard(df, sb_winner, score_final_chaque_ti_gars, noms_des_ti_
                 if cell == ALL_DATA[index // 3][0]:
                     score_final_chaque_ti_gars[ti_gars_number] += points_for_game[0]
 
-                    # if IS_SB:
-                    #     raise Exception(cell, sb_winner[ti_gars_number])
-
                     if IS_SB and cell == sb_winner[ti_gars_number]: # extra points for sb winner prediction
-                        pass
-                        # score_final_chaque_ti_gars[ti_gars_number] += SB_WINNER_POINTS
+                        score_final_chaque_ti_gars[ti_gars_number] += SB_WINNER_POINTS
 
 
             if index % 3 == 1:  # good score
