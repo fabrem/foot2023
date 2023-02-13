@@ -106,7 +106,7 @@ def read_drive_sheets():
             all_data = week
         else:
             all_data = np.hstack((all_data, week))
-
+    print(all_data)
     return all_data
 
 
